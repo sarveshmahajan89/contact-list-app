@@ -9,9 +9,9 @@ contactListApp.config(['$routeProvider',
         templateUrl: 'partials/home.html',
         controller: 'homeCtrl'
       }).
-      when('/f1list', {
-        templateUrl: 'partials/f1List.html',
-        controller: 'f1ListCtrl'
+      when('/contactlist', {
+        templateUrl: 'partials/contactList.html',
+        controller: 'contactListCtrl'
       }).
       when('/services', {
         templateUrl: 'partials/services.html',
