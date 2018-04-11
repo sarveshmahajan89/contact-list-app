@@ -1,0 +1,68 @@
+<div >
+	<span class="skills">F1 Race winning champions</span>
+
+	<ul class="list-inline">
+        <li class="list-inline-item" ng-repeat="n in [] | range:11" ng-click="setSession(2005+$index)">
+          <a class="btn-social btn-outline" href="javascript:void(0)">
+            <i>{{$index+2005}}</i>
+          </a>
+        </li>
+    </ul>
+	<div ng-if="raceData.length>0" class="table-container">
+		<div class="row table-row-head">
+	        <div class="col-md-2">
+	        	Season
+	        </div>
+	        <div class="col-md-1">
+	        	Round
+	        </div>
+	        <div class="col-md-4">
+	        	Race Name
+	        </div>
+	        <div class="col-md-5">
+	        	Circuit
+	        </div>
+	    </div>
+
+	    <div ng-repeat="item in raceData" class="table-row-container">
+		    <div class="row clickable table-row-td" ng-click="getRaceResult(item.season, item.round)" data-toggle="collapse" data-target="#{{item.season}}_{{item.round}}">
+		        <div class="col-md-2">
+		        	{{item.season}}
+		        </div>
+		        <div class="col-md-1">
+		        	{{item.round}}
+		        </div>
+		        <div class="col-md-4">
+		        	{{item.raceName}}
+		        </div>
+		        <div class="col-md-5">
+		        	{{item.Circuit.circuitName}}
+		        </div>
+		    </div>
+		    <div id="{{item.season}}_{{item.round}}" class="collapse">
+			  <table class="table table-hover table-dark">
+			  	<thead>
+				  	<tr>
+				      <th >Position</th>
+				      <th scope="col">Driver</th>
+				      <th scope="col">Laps</th>
+				      <th scope="col">Grid</th>
+				      <th scope="col">Points</th>
+					</tr>
+				 </thead>
+				  <tbody>
+				    <tr ng-repeat="item in raceResult" class="table-row-driver">
+				      <td>{{item.position}}</td>
+				      <td>{{item.Driver.givenName}} {{item.Driver.familyName}}</td>
+				      <td>{{item.laps}}</td>
+				      <td>{{item.grid}}</td>
+				      <td>{{item.points}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+		    </div>
+		</div>
+
+	</div>
+
+</div>

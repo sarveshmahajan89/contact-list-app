@@ -1,0 +1,25 @@
+{
+  "name": "Contact-List-App",
+  "version": "1.0.0",
+  "description": "User Contact List application",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sarveshmahajan89/Formula-One-series.git"
+  },
+  "keywords": [
+    "nodejs",
+    "integration"
+  ],
+  "author": "sarvesh",
+  "license": "ISC",
+  "homepage": "https://github.com/sarveshmahajan89/Contact-List-App/tree/master/public#readme",
+  "dependencies": {
+    "angular-route": "^1.6.6",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
