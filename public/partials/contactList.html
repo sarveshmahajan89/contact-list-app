@@ -1,68 +1,56 @@
-<div >
-	<span class="skills">F1 Race winning champions</span>
+<div class="workarea">
+	<span class="name">AppOrbit Contact List</span>
+    <hr class="star-light">
 
-	<ul class="list-inline">
-        <li class="list-inline-item" ng-repeat="n in [] | range:11" ng-click="setSession(2005+$index)">
-          <a class="btn-social btn-outline" href="javascript:void(0)">
-            <i>{{$index+2005}}</i>
-          </a>
-        </li>
-    </ul>
-	<div ng-if="raceData.length>0" class="table-container">
-		<div class="row table-row-head">
-	        <div class="col-md-2">
-	        	Season
-	        </div>
-	        <div class="col-md-1">
-	        	Round
-	        </div>
-	        <div class="col-md-4">
-	        	Race Name
-	        </div>
-	        <div class="col-md-5">
-	        	Circuit
-	        </div>
-	    </div>
+	<form>
+	    <div class="row">
+		    <div class="col-sm-6">
+		    	<input class="form-control" id="inputdefault" type="text" placeholder="Quick find contacts" ng-model="inputSearch">
+		    	</div>
+		    <div class="col-sm-6">
+		    	<button type="submit" class="btn btn-primary mb-2">Add Contact</button>
+		    	</div>
+		  </div>
+    </form>
 
-	    <div ng-repeat="item in raceData" class="table-row-container">
-		    <div class="row clickable table-row-td" ng-click="getRaceResult(item.season, item.round)" data-toggle="collapse" data-target="#{{item.season}}_{{item.round}}">
-		        <div class="col-md-2">
-		        	{{item.season}}
-		        </div>
-		        <div class="col-md-1">
-		        	{{item.round}}
-		        </div>
-		        <div class="col-md-4">
-		        	{{item.raceName}}
-		        </div>
-		        <div class="col-md-5">
-		        	{{item.Circuit.circuitName}}
-		        </div>
-		    </div>
-		    <div id="{{item.season}}_{{item.round}}" class="collapse">
-			  <table class="table table-hover table-dark">
-			  	<thead>
-				  	<tr>
-				      <th >Position</th>
-				      <th scope="col">Driver</th>
-				      <th scope="col">Laps</th>
-				      <th scope="col">Grid</th>
-				      <th scope="col">Points</th>
-					</tr>
-				 </thead>
-				  <tbody>
-				    <tr ng-repeat="item in raceResult" class="table-row-driver">
-				      <td>{{item.position}}</td>
-				      <td>{{item.Driver.givenName}} {{item.Driver.familyName}}</td>
-				      <td>{{item.laps}}</td>
-				      <td>{{item.grid}}</td>
-				      <td>{{item.points}}</td>
-				    </tr>
-				  </tbody>
-				</table>
-		    </div>
+    <div class="table-block table-dark">
+    	<div class="row tab-row">
+		    <div class="col-sm-1 tab-col">#</div>
+		    <div class="col-sm-3 tab-col">Name</div>
+		    <div class="col-sm-4 tab-col">Email</div>
+		    <div class="col-sm-4 tab-col">Contact</div>
+    	</div>
+	    <div class="row tab-row" ng-repeat="item in contactList | filter:inputSearch">
+	      	<div class="col-sm-1 tab-col">{{$index+1}}</div>
+	      	<div class="col-sm-3 tab-col">{{item.name}}</div>
+      		<div class="col-sm-4 tab-col">
+      			<label class="label-row" ng-repeat="email in item.email">{{email.mailtype}} : {{email.mailid}}</label>
+      		</div>
+      		<div class="col-sm-4 tab-col">
+      			<label class="label-row" ng-repeat="num in item.contact">{{num.contacttype}} : {{num.number}}</label>
+      		</div>
 		</div>
+    </div>
 
-	</div>
+    <!-- <nav aria-label="...">
+	  <ul class="pagination">
+	    <li class="page-item disabled">
+	      <a class="page-link">Previous</a>
+	    </li>
+	    <li class="page-item">
+	    	<a class="page-link" href="javascript:void(0)">1</a>
+    	</li>
+	    <li class="page-item active">
+	      <a class="page-link">2</a>
+	    </li>
+	    <li class="page-item">
+	    	<a class="page-link" href="javascript:void(0)">3</a>
+    	</li>
+	    <li class="page-item">
+	      <a class="page-link" href="javascript:void(0)">Next</a>
+	    </li>
+	  </ul>
+	</nav> -->
+	<pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
 
 </div>

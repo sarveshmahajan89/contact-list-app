@@ -1,33 +1,26 @@
 var contactListApp = angular.module('contactListApp');
 
-contactListApp.controller('f1ListCtrl', ['$scope', '$location', '$http', function ($scope, $location,$http) {
-	// to do stuff
-	$scope.selectedSession = 2005;
-	$scope.raceData = {};
-	$scope.raceResult = {};
-	$scope.selectedRound = 0;
+contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'getHttpData', function ($scope, $location,$http, getHttpData) {
+	getHttpData.getContactData().then(function(data) {
+        $scope.contactList = data;
+        $scope.numPerPage = 5;
+	$scope.noOfPages = Math.ceil($scope.contactList.length / $scope.numPerPage);
+	$scope.currentPage = 1;
 
-	$scope.setSession = function(session) {
-		$scope.selectedSession = session;
-		$scope.getRaceData();
+	$scope.setPage = function () {
+	   $scope.data = $scope.get( ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage );
 	};
+    });
 
-	$scope.getRaceData = function() {
-		// fetching list of F1 event per year
-		var url = 'http://ergast.com/api/f1/'+$scope.selectedSession+'.json';
+    
+	  
+	$scope.$watch( 'currentPage', $scope.setPage );
 
-		$http.get(url).success(function(data) {
-			$scope.raceData = data.MRData.RaceTable.Races;
-		});
-	}
+	$scope.get = function(offset, limit) {
+      return $scope.contactList.slice( offset, offset+limit );
+    },
+    $scope.count = function() {
+      return $scope.contactList.length;
+    }
 
-	$scope.getRaceResult = function(season, round) {
-		// fetching list of F1 event winner based on selection
-		$scope.selectedRound = round;
-		var url = 'http://ergast.com/api/f1/'+season+'/'+round+'/'+'results.json';
-
-		$http.get(url).success(function(data) {
-			$scope.raceResult = data.MRData.RaceTable.Races[0].Results;
-		});
-	}
 }]);

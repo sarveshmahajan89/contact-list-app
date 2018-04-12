@@ -157,30 +157,33 @@ section.success {
 header.masthead {
   padding-top: 100px;
   padding-bottom: 50px;
-  text-align: center;
   color: white;
-  background: #18BC9C; }
+  background: #18BC9C; 
+}
   header.masthead img {
     display: block;
     margin: 0 auto 20px; }
   header.masthead .intro-text .name {
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
     display: block;
-    text-transform: uppercase; }
+    text-align: center;
+    text-transform: uppercase; 
+  }
   header.masthead .intro-text .skills {
-    font-size: 1.25em;
-    font-weight: 300; }
+    font-size: 1em;
+    font-weight: 300;
+  }
 
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 200px;
     padding-bottom: 100px; }
     header.masthead .intro-text .name {
-      font-size: 4.75em; }
+      font-size: 2em; }
     header.masthead .intro-text .skills {
-      font-size: 1.75em; } }
+      font-size: 1.5em; } }
 
 #portfolio .portfolio-item {
   right: 0;
@@ -513,4 +516,37 @@ tr.table-row-driver:nth-child(1) {
 @keyframes winner {
     from {background-color: teal;}
     to {background-color: #2C3E50;}
+}
+
+div.workarea div.subhead{
+  text-align: center;
+}
+
+div.tab-row {
+  border-bottom: #fff 1px solid;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+div.tab-row:hover:not(:first-child) {
+  background-color: grey;
+  cursor: pointer;
+}
+
+div.tab-col {
+  text-align: center;
+}
+
+div.tab-col:not(:last-child) {
+  border-right: #fff 1px solid;
+  text-align: center;
+}
+
+label.label-row{
+  text-align: center;
+  display: block;
+}
+
+div.table-block {
+  margin-top: 15px;
 }
