@@ -1,4 +1,4 @@
-# [Contact list App]
+# Contact list App
 
 ## Introduction
 
