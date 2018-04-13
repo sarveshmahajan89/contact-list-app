@@ -31,7 +31,6 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	}
 
 	getHttpData.getContactData().then(function(result) {
-        $scope.contactList = result.data;
         $scope.fullContactList = result.data;
         $scope.unFilteredList = result.data;
 		$scope.noOfPages = Math.ceil($scope.count() / $scope.numPerPage);
