@@ -1,7 +1,7 @@
 var contactListApp = angular.module('contactListApp');
 
-contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'getHttpData', 'ngToast', 
-	function ($scope, $location,$http, getHttpData, ngToast) {
+contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'getHttpData', 'ngToast', '$timeout',
+	function ($scope, $location, $http, getHttpData, ngToast, $timeout) {
 	
 	$scope.switchOption = 'search';
 	$scope.contactList = [];
@@ -20,7 +20,14 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 		$scope.lName = '';
 	}
 
-	// ngToast.create('a toast message...');
+	$scope.changeInName = function() {
+		 $timeout(function() {		 	
+		 	$scope.$apply(function() {
+			    $scope.fName = angular.element($('#fnameid')).val();
+		 		$scope.lName = angular.element($('#lnameid')).val();
+			});
+	    }, 0);
+	}
 
 	getHttpData.getContactData().then(function(result) {
         $scope.contactList = result.data;
@@ -33,7 +40,7 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	   $scope.contactList = $scope.get(($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage);
 	};
 
-	$scope.$watch( 'currentPage', $scope.setPage );
+	$scope.$watch('currentPage', $scope.setPage);
 
 	$scope.get = function(offset, limit) {
       return $scope.fullContactList.slice(offset, offset+limit);
@@ -76,7 +83,9 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	    console.log(newObj);
       	$scope.fullContactList.push(newObj);
       	ngToast.create('Details added successfully');
+      	$scope.setPage();
       	$scope.clearAddFields();
+      	$scope.switchOption = 'search';
     };
 
     $scope.editContact = function(index) {
@@ -101,9 +110,11 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	    }
 	    updateObj.email = $scope.emailList;
 	    updateObj.contact = $scope.phoneList;
-	    console.log(updateObj);
-      	$scope.fullContactList[$scope.indexToUpdate] = updateObj;
-      	ngToast.create('Details updated successfully');
+    	$scope.fullContactList[$scope.indexToUpdate] = updateObj;
+		ngToast.create('Details updated successfully');
+		$scope.setPage();
+		$scope.clearAddFields();
+		$scope.switchOption = 'search';
     };
 
 }]);
