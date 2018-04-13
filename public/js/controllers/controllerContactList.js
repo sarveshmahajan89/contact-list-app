@@ -6,6 +6,7 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	$scope.switchOption = 'search';
 	$scope.contactList = [];
 	$scope.fullContactList = [];
+	$scope.unFilteredList = [];
 	$scope.numPerPage = 4;
 	$scope.currentPage = 1;
 	$scope.indexToUpdate = 0;
@@ -32,18 +33,19 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	getHttpData.getContactData().then(function(result) {
         $scope.contactList = result.data;
         $scope.fullContactList = result.data;
+        $scope.unFilteredList = result.data;
 		$scope.noOfPages = Math.ceil($scope.count() / $scope.numPerPage);
 		$scope.setPage();
     });
 
 	$scope.setPage = function () {
-	   $scope.contactList = $scope.get(($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage);
+	   $scope.contactList = $scope.get($scope.fullContactList, ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage);
 	};
 
 	$scope.$watch('currentPage', $scope.setPage);
 
-	$scope.get = function(offset, limit) {
-      return $scope.fullContactList.slice(offset, offset+limit);
+	$scope.get = function(arr, offset, limit) {
+      return arr.slice(offset, offset+limit);
     };
 
     $scope.count = function() {
@@ -116,5 +118,23 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 		$scope.clearAddFields();
 		$scope.switchOption = 'search';
     };
+
+    $scope.searchFilter = function() {
+    	$scope.fullContactList = $scope.unFilteredList;
+    	if(!$scope.inputSearch){
+    		$scope.fullContactList = $scope.unFilteredList;
+    		$scope.setPage();
+            return;
+        }
+    	var result = [];
+    	var searchString = $scope.inputSearch.toLowerCase();
+		angular.forEach($scope.fullContactList, function(item){
+	        if(item.fname.toLowerCase().indexOf(searchString) !== -1 || item.lname.toLowerCase().indexOf(searchString) !== -1){
+	        	result.push(item);
+	    	}
+	    });
+	    $scope.fullContactList = result;
+	    $scope.contactList = $scope.get(result, ($scope.currentPage - 1) * $scope.numPerPage, $scope.numPerPage);
+    }
 
 }]);

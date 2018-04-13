@@ -23,7 +23,7 @@
 			<form>
 			    <div class="row">
 				    <div class="col-sm-6">
-				    	<input class="form-control" id="inputdefault" type="text" placeholder="Quick find contacts" ng-model="inputSearch">
+				    	<input class="form-control" id="inputdefault" type="text" placeholder="Quick find contacts" ng-model="inputSearch" ng-change="searchFilter()">
 			    	</div>
 			    	<div class="col-sm-6">
 						<pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
