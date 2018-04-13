@@ -6,7 +6,7 @@ contactListApp.controller('contactListCtrl', ['$scope', '$location', '$http', 'g
 	$scope.switchOption = 'search';
 	$scope.contactList = [];
 	$scope.fullContactList = [];
-	$scope.numPerPage = 2;
+	$scope.numPerPage = 4;
 	$scope.currentPage = 1;
 	$scope.indexToUpdate = 0;
 
