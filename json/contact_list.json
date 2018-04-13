@@ -1,6 +1,5 @@
 [
 	    {
-			"id": "G001",
 			"sno": "1",
 	        "fname": "Sarvesh",
 	        "lname": "Mahajan",
@@ -26,7 +25,6 @@
 	        	]
 	    },
 	    {
-			"id": "G002",
 			"sno": "2",
 	        "fname": "Amit",
 	        "lname": "Soni",
@@ -52,7 +50,6 @@
 	        	]
 	    },
 	    {
-			"id": "G003",
 			"sno": "3",
 	        "fname": "Rahul",
 	        "lname": "Soni",
@@ -78,7 +75,6 @@
 	        	]
 	    },
 	    {
-			"id": "G004",
 			"sno": "4",
 	        "fname": "Jay",
 	        "lname": "Soni",
@@ -104,7 +100,6 @@
 	        	]
 	    },
 	    {
-			"id": "G005",
 			"sno": "5",
 	        "fname": "Gaurav",
 	        "lname": "Soni",
@@ -126,6 +121,106 @@
 		        	{
 		        	"contacttype":"home",
 		        	"number": "2222"
+		        	}
+	        	]
+	    },
+	    {
+			"sno": "6",
+	        "fname": "Shashank",
+	        "lname": "Kais",
+	        "email": [
+		        	{
+		        	"mailtype":"personal",
+		        	"mailid": "shashank@gmail.com"
+		        	},
+		        	{
+		        	"mailtype":"friend",
+		        	"mailid": "shashankvhome@gmail.com"
+		        	},
+		        	{
+		        	"mailtype":"office",
+		        	"mailid": "shashankvhome@gmail.com"
+		        	}
+	        	],
+	        "contact": [
+		        	{
+		        	"contacttype":"parents",
+		        	"number": "6666"
+		        	},
+		        	{
+		        	"contacttype":"home",
+		        	"number": "2222"
+		        	}
+	        	]
+	    },
+	    {
+			"sno": "7",
+	        "fname": "Deepa",
+	        "lname": "Jais",
+	        "email": [
+		        	{
+		        	"mailtype":"parent",
+		        	"mailid": "Deepa_par@gmail.com"
+		        	},
+		        	{
+		        	"mailtype":"official",
+		        	"mailid": "Deepa@gmail.com"
+		        	}
+	        	],
+	        "contact": [
+		        	{
+		        	"contacttype":"personal",
+		        	"number": "1111"
+		        	}
+	        	]
+	    },
+	    {
+			"sno": "8",
+	        "fname": "Aman",
+	        "lname": "Sinha",
+	        "email": [
+		        	{
+		        	"mailtype":"personal",
+		        	"mailid": "amanv@gmail.com"
+		        	},
+		        	{
+		        	"mailtype":"officaial",
+		        	"mailid": "amanvoffice@gmail.com"
+		        	}
+	        	],
+	        "contact": [
+		        	{
+		        	"contacttype":"personal",
+		        	"number": "745754"
+		        	},
+		        	{
+		        	"contacttype":"home",
+		        	"number": "2277722"
+		        	}
+	        	]
+	    },
+	    {
+			"sno": "9",
+	        "fname": "Vipul",
+	        "lname": "Maan",
+	        "email": [
+		        	{
+		        	"mailtype":"personal",
+		        	"mailid": "vip_man@gmail.com"
+		        	},
+		        	{
+		        	"mailtype":"other",
+		        	"mailid": "vipul_12@gmail.com"
+		        	}
+	        	],
+	        "contact": [
+		        	{
+		        	"contacttype":"personal",
+		        	"number": "999"
+		        	},
+		        	{
+		        	"contacttype":"parent",
+		        	"number": "623532"
 		        	}
 	        	]
 	    }
