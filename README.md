@@ -1,6 +1,8 @@
-"# contact-list-app" 
-# [Start Application](index.html/)
+# [Contact list App]
 
+## Introduction
+
+Making a contact list application and form to add/edit it
 
 ## Preview
 
