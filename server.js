@@ -22,3 +22,13 @@ app.get('/index.html', function(req, res) {
 	res.sendFile(__dirname+'/'+'index.html');
 })
 
+app.get('/getcontacts', function(req, res) {
+	console.log(req.url);
+	//
+	var readList = require('./json/contact_list.json');
+	console.log('reading json done');
+	var sendData = {
+			"data":readList
+		};
+	res.end(JSON.stringify(sendData));
+})

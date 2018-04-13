@@ -8,8 +8,8 @@ contactListApp.directive('pagination', function() {
       currentPage: '=',
       onSelectPage: '&'
     },
-    templateUrl: '<div class="pagination"><ul><li ng-class="{disabled: noPrevious()}"><a ng-click="selectPrevious()">Previous</a></li><li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="selectPage(page)">{{page}}</a></li><li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li></ul></div>',
-    replace: true,
+    template: '<div class="pagination"><ul><li ng-class="{disabled: noPrevious()}"><a ng-click="selectPrevious()">Previous</a></li><li ng-repeat="page in pages" ng-class="{active: isActive(page)}"><a ng-click="selectPage(page)">{{page}}</a></li><li ng-class="{disabled: noNext()}"><a ng-click="selectNext()">Next</a></li></ul></div>',
+    replace: false,
     link: function(scope) {
       scope.$watch('numPages', function(value) {
         scope.pages = [];

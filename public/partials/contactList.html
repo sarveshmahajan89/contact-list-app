@@ -1,56 +1,59 @@
 <div class="workarea">
-	<span class="name">AppOrbit Contact List</span>
+<angularjs-notify></angularjs-notify>
+	<span class="name">AppOrbit Contact Page</span>
     <hr class="star-light">
 
-	<form>
-	    <div class="row">
-		    <div class="col-sm-6">
-		    	<input class="form-control" id="inputdefault" type="text" placeholder="Quick find contacts" ng-model="inputSearch">
-		    	</div>
-		    <div class="col-sm-6">
-		    	<button type="submit" class="btn btn-primary mb-2">Add Contact</button>
-		    	</div>
-		  </div>
-    </form>
+    <div class="list-container">
+	    <div class="switch-button-group">
+		    <form>
+		    	<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <label class="btn btn-primary active" ng-click="switchOption='search'">
+				    <input type="radio" ng-value="search" autocomplete="off" ng-model="switchOption" >Search Contact
+				  </label>
+				  <label class="btn btn-primary" ng-click="switchOption='add'">
+				    <input type="radio" ng-value="add" autocomplete="off" ng-model="switchOption">Add Contact
+				  </label>
+				</div>
+				</form>
+	    </div>
+	    <div ng-show="switchOption=='search'">
+	    	<div class="switch-button-group">
+	    		<h3>Contact List</h3>
+	    	</div>
+			<form>
+			    <div class="row">
+				    <div class="col-sm-6">
+				    	<input class="form-control" id="inputdefault" type="text" placeholder="Quick find contacts" ng-model="inputSearch">
+			    	</div>
+			    	<div class="col-sm-6">
+						<pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
+					</div>
+				  </div>
+		    </form>
 
-    <div class="table-block table-dark">
-    	<div class="row tab-row">
-		    <div class="col-sm-1 tab-col">#</div>
-		    <div class="col-sm-3 tab-col">Name</div>
-		    <div class="col-sm-4 tab-col">Email</div>
-		    <div class="col-sm-4 tab-col">Contact</div>
-    	</div>
-	    <div class="row tab-row" ng-repeat="item in contactList | filter:inputSearch">
-	      	<div class="col-sm-1 tab-col">{{$index+1}}</div>
-	      	<div class="col-sm-3 tab-col">{{item.name}}</div>
-      		<div class="col-sm-4 tab-col">
-      			<label class="label-row" ng-repeat="email in item.email">{{email.mailtype}} : {{email.mailid}}</label>
-      		</div>
-      		<div class="col-sm-4 tab-col">
-      			<label class="label-row" ng-repeat="num in item.contact">{{num.contacttype}} : {{num.number}}</label>
-      		</div>
+		    <div class="table-block table-dark">
+		    	<div class="row tab-row">
+				    <div class="col-sm-1 tab-col">#</div>
+				    <div class="col-sm-3 tab-col">Name</div>
+				    <div class="col-sm-4 tab-col">Email</div>
+				    <div class="col-sm-4 tab-col">Contact</div>
+		    	</div>
+			    <div class="row tab-row" ng-repeat="item in contactList | filter:inputSearch" ng-click="editContact($index)">
+			      	<div class="col-sm-1 tab-col">{{item.sno}}</div>
+			      	<div class="col-sm-3 tab-col">{{item.fname}} {{item.lname}}</div>
+		      		<div class="col-sm-4 tab-col">
+		      			<label class="label-row" ng-repeat="email in item.email">{{email.mailtype}} : {{email.mailid}}</label>
+		      		</div>
+		      		<div class="col-sm-4 tab-col">
+		      			<label class="label-row" ng-repeat="num in item.contact">{{num.contacttype}} : {{num.number}}</label>
+		      		</div>
+				</div>
+		    </div>			
+			
 		</div>
-    </div>
 
-    <!-- <nav aria-label="...">
-	  <ul class="pagination">
-	    <li class="page-item disabled">
-	      <a class="page-link">Previous</a>
-	    </li>
-	    <li class="page-item">
-	    	<a class="page-link" href="javascript:void(0)">1</a>
-    	</li>
-	    <li class="page-item active">
-	      <a class="page-link">2</a>
-	    </li>
-	    <li class="page-item">
-	    	<a class="page-link" href="javascript:void(0)">3</a>
-    	</li>
-	    <li class="page-item">
-	      <a class="page-link" href="javascript:void(0)">Next</a>
-	    </li>
-	  </ul>
-	</nav> -->
-	<pagination num-pages="noOfPages" current-page="currentPage" class="pagination-small"></pagination>
-
+		<div ng-if="switchOption=='add' || switchOption=='edit'">
+			<div ng-include="'partials/addEditTemplate.html'">
+		</div>
+	</div>
 </div>

@@ -1,5 +1,5 @@
 var contactListApp = angular.module('contactListApp', [
-'ngRoute'
+'ngRoute','ngToast'
 ]);
 
 contactListApp.config(['$routeProvider',
