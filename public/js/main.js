@@ -1,6 +1,4 @@
-var contactListApp = angular.module('contactListApp', [
-'ngRoute','ngToast'
-]);
+var contactListApp = angular.module('contactListApp', ['ngRoute','ngToast']);
 
 contactListApp.config(['$routeProvider',
   function($routeProvider) {
